@@ -1,0 +1,12 @@
+{
+  "name": "riskradar-vulnerable-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node test.js",
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "lodash": "4.17.20"
+  }
+}

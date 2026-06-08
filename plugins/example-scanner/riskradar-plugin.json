@@ -1,0 +1,9 @@
+{
+  "id": "riskradar-example-scanner",
+  "version": "0.1.0",
+  "entry": "./dist/index.js",
+  "permissions": [
+    "project:read",
+    "scanner:emit-findings"
+  ]
+}
