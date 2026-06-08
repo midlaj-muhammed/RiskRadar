@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "019ea713-d3ac-71ae-9c43-d216254cdb9c",
+  "phaseId": "phase-3",
+  "phaseName": "Rewrite README and finalize docs",
+  "timestamp": "2026-06-08T17:53:39.735Z",
+  "question": "Reviewer still blocking phase \"Rewrite README and finalize docs\" after 3 retries. How should we proceed?",
+  "flags": [
+    {
+      "problem": "Project test command (`npm test`) did not validate.",
+      "evidence": "test script does not reference a known runner (vitest, jest, mocha, ava, tap, node --test, playwright test, bun test); got: pnpm --filter @riskradar/core test",
+      "severity": "block",
+      "redirect": "Wire test properly before completing this phase — make `npm test` a real, installable command (resolve the runner, fix the script)."
+    },
+    {
+      "problem": "Project lint command (`npm run lint`) did not validate.",
+      "evidence": "lint script does not reference a known runner (biome, eslint, tsc, oxlint); got: pnpm -r lint",
+      "severity": "block",
+      "redirect": "Wire lint properly before completing this phase — make `npm run lint` a real, installable command (resolve the runner, fix the script)."
+    },
+    {
+      "problem": "Project typecheck command (`npm run typecheck`) did not validate.",
+      "evidence": "typecheck script does not reference a known runner (tsc, tsgo, vue-tsc, svelte-check); got: pnpm -r typecheck",
+      "severity": "block",
+      "redirect": "Wire typecheck properly before completing this phase — make `npm run typecheck` a real, installable command (resolve the runner, fix the script)."
+    }
+  ],
+  "options": [
+    {
+      "id": "override",
+      "label": "Override and proceed (mark phase done)"
+    },
+    {
+      "id": "pause",
+      "label": "Pause ferment for manual fix",
+      "recommendation": true
+    },
+    {
+      "id": "abandon",
+      "label": "Abandon ferment"
+    }
+  ],
+  "recommendation": "pause",
+  "recommendationRationale": "Pausing preserves the in-flight work and lets you inspect the actual code before deciding to override the reviewer or abandon."
+}

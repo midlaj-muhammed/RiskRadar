@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "stepStartCounts": {},
+  "blockRetries": {
+    "phase-2": 2
+  },
+  "lastBlockHashes": {
+    "phase-2": "3e7b73cd"
+  },
+  "stepCompleteAttempts": {
+    "phase-1:step-1": 1,
+    "phase-1:step-2": 1,
+    "phase-2:step-1": 1,
+    "phase-3:step-1": 1
+  },
+  "phaseStartRefs": {
+    "phase-1": "46c22616122a12e53dbfb6f84c0316c3127d24d7",
+    "phase-2": "46c22616122a12e53dbfb6f84c0316c3127d24d7",
+    "phase-3": "46c22616122a12e53dbfb6f84c0316c3127d24d7"
+  },
+  "stepStartRefs": {
+    "phase-1:step-1": "46c22616122a12e53dbfb6f84c0316c3127d24d7",
+    "phase-1:step-2": "46c22616122a12e53dbfb6f84c0316c3127d24d7",
+    "phase-2:step-1": "46c22616122a12e53dbfb6f84c0316c3127d24d7",
+    "phase-3:step-1": "46c22616122a12e53dbfb6f84c0316c3127d24d7"
+  }
+}

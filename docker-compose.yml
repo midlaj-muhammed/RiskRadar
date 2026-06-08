@@ -1,0 +1,44 @@
+# Local dev infrastructure for RiskRadar durable persistence + queue.
+# These are LOCAL DEV containers only — the credentials below are throwaway and
+# must never be used in production. Start with: docker compose up -d
+#
+# Then in .env:
+#   RISKRADAR_PERSIST_POSTGRES=true
+#   DATABASE_URL=postgresql://riskradar:riskradar@localhost:5432/riskradar
+#   RISKRADAR_QUEUE_MODE=redis
+#   REDIS_URL=redis://localhost:6379
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: riskradar-postgres
+    environment:
+      POSTGRES_USER: riskradar
+      POSTGRES_PASSWORD: riskradar
+      POSTGRES_DB: riskradar
+    ports:
+      - "5432:5432"
+    volumes:
+      - riskradar-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U riskradar -d riskradar"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: riskradar-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - riskradar-redisdata:/data
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  riskradar-pgdata:
+  riskradar-redisdata:
