@@ -1,0 +1,15 @@
+# Keep the Vercel upload small — only ship what the web build needs.
+.git
+.tools
+.riskradar
+node_modules
+**/node_modules
+**/.next
+.turbo
+tests/fixtures
+docs/pitch-deck.pptx
+docs/pitch-deck.html
+docs/assets
+*.log
+.env
+.env.*

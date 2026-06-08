@@ -1,0 +1,33 @@
+{
+  "name": "@riskradar/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "scan:fixture": "tsx src/cli-scan-fixture.ts"
+  },
+  "dependencies": {
+    "@octokit/rest": "^22.0.0",
+    "ai": "^6.0.191",
+    "bullmq": "^5.77.6",
+    "nanoid": "^5.1.0",
+    "openai": "^6.39.0",
+    "pg": "^8.21.0",
+    "semver": "^7.7.0",
+    "simple-git": "^3.28.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.20.0",
+    "@types/semver": "^7.7.0",
+    "tsx": "^4.20.0"
+  }
+}
