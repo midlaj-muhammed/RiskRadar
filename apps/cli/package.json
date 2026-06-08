@@ -1,0 +1,28 @@
+{
+  "name": "riskradar-cli",
+  "version": "0.1.2",
+  "description": "RiskRadar CLI — standalone supply-chain scanner (npm + PyPI) with reachability (VEX-lite) triage.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "riskradar": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "bundle": "esbuild src/index.ts --bundle --platform=node --target=node18 --format=esm --packages=bundle --banner:js=\"import{createRequire}from'module';const require=createRequire(import.meta.url);\" --outfile=dist/index.js",
+    "prepublishOnly": "pnpm bundle && node -e \"const p=require('./package.json'); delete p.devDependencies; require('fs').writeFileSync('./package.json', JSON.stringify(p, null, 1)+'\\n')\"",
+    "postpublish": "git checkout -- package.json"
+  },
+  "devDependencies": {
+    "@riskradar/core": "workspace:*",
+    "esbuild": "^0.25.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

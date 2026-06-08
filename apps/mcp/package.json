@@ -1,0 +1,19 @@
+{
+  "name": "@riskradar/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "verify:plugin": "tsx src/verify-plugin.ts",
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "@riskradar/core": "workspace:*",
+    "tsx": "^4.20.0",
+    "zod": "^4.1.0"
+  }
+}

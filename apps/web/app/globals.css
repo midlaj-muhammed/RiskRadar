@@ -1,0 +1,1251 @@
+/*
+ * RiskRadar Watch Commander — dark editorial theme.
+ * Adapts DESIGN.md's language to dark mode: a single Cursor-Orange accent used
+ * sparingly, hairline-only depth (no heavy shadows), editorial type with
+ * negative tracking on display, and JetBrains Mono on every data/code surface.
+ */
+:root {
+  color-scheme: dark;
+  --bg: #0d0d0c;
+  --bg-soft: #121210;
+  --surface: #161513;
+  --surface-2: #1c1b18;
+  --hairline: #272620;
+  --hairline-strong: #36342d;
+  --text: #f3f2ec;
+  --body: #c3c0b6;
+  --muted: #908c80;
+  --muted-soft: #66635b;
+  --primary: #f54e00;
+  --primary-active: #ff6a26;
+  --primary-soft: rgba(245, 78, 0, 0.13);
+  --on-primary: #ffffff;
+  --success: #4ec99a;
+  --error: #ff5d73;
+  --warn: #e0a24a;
+
+  --sans: "Inter", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: "JetBrains Mono", "Fira Code", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.1px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* ----- App shell ----- */
+.shell {
+  display: grid;
+  grid-template-columns: 248px 1fr;
+  min-height: 100vh;
+}
+
+.side {
+  border-right: 1px solid var(--hairline);
+  padding: 26px 16px;
+  background: var(--bg-soft);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  margin: 0 8px 26px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.brand::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: var(--primary);
+  flex: none;
+}
+
+.nav {
+  display: grid;
+  gap: 2px;
+}
+
+.nav a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.nav a:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.nav a.active {
+  color: var(--text);
+  background: var(--surface-2);
+  box-shadow: inset 2px 0 0 var(--primary);
+}
+
+.nav a.active svg {
+  color: var(--primary);
+}
+
+.sidebar-foot {
+  margin-top: auto;
+  padding: 14px 12px 4px;
+  border-top: 1px solid var(--hairline);
+  color: var(--muted-soft);
+  font-size: 12px;
+  line-height: 1.5;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.main {
+  padding: 40px 44px;
+  max-width: 1280px;
+  width: 100%;
+}
+
+/* ----- Headings ----- */
+.page-head {
+  margin-bottom: 28px;
+}
+
+.head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.topline {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--text);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.section-label {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+p {
+  color: var(--body);
+}
+
+/* ----- Cards / panels ----- */
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+.metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 16px;
+}
+
+.card,
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+}
+
+.card {
+  padding: 18px 18px 16px;
+}
+
+.metric-label {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.metric-value {
+  font-family: var(--mono);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  margin-top: 14px;
+  color: var(--text);
+}
+
+.metric-foot {
+  color: var(--muted-soft);
+  font-size: 12px;
+  margin-top: 7px;
+}
+
+.two {
+  grid-template-columns: 1.45fr 1fr;
+  align-items: start;
+}
+
+.panel {
+  padding: 22px;
+  overflow: hidden;
+}
+
+/* ----- Tables ----- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 11px 8px;
+  border-bottom: 1px solid var(--hairline);
+  vertical-align: top;
+  color: var(--body);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+th {
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+td:first-child {
+  color: var(--text);
+}
+
+/* Long tokens (vuln ids, package names, file lists) wrap instead of overflowing. */
+td {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Cells that opt into clean truncation (see .id / .path / .url-chip / .list-trunc
+   below) must NOT inherit the table-wide word-break, or the ellipsis never kicks
+   in and the token still wraps mid-character. */
+td .id,
+td .id-sm,
+td .id-lg,
+td .path,
+td .list-trunc,
+td .url-chip,
+td .pkg {
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/* ----- Table scroll + pagination ----- */
+/* Wrap tables so wide ones scroll horizontally instead of being clipped by the
+   panel's overflow:hidden (the mobile cut-off). A thin scrollbar + soft right-edge
+   fade signals scrollability without adding chrome. */
+.table-scroll {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hairline-strong) transparent;
+}
+.table-scroll::-webkit-scrollbar { height: 6px; }
+.table-scroll::-webkit-scrollbar-thumb { background: var(--hairline-strong); border-radius: 4px; }
+.table-scroll::-webkit-scrollbar-track { background: transparent; }
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline);
+}
+.pager-btn {
+  background: var(--surface);
+  border: 1px solid var(--hairline-strong);
+  color: var(--body);
+  border-radius: 8px;
+  padding: 6px 11px;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  font-family: inherit;
+}
+.pager-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+}
+.pager-btn.active {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary-active);
+  font-weight: 600;
+}
+.pager-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.pager-gap {
+  color: var(--muted);
+  padding: 0 2px;
+}
+.pager-info {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .pager-info {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 4px;
+  }
+}
+
+/* ============================================================
+   Mobile card-mode for tables (≤640px)
+   ============================================================
+   Tables with 5–9 columns are unusable as tables on phones — values either
+   clip with ellipsis (lossy) or scroll horizontally (clunky). Below 640px we
+   restyle every `.table-scroll table` into a vertical list of cards: one card
+   per row, each cell rendered as a flex row showing its column label (via
+   `data-label`) on the left and the full value on the right. Long IDs, paths
+   and lists wrap freely with no max-width — nothing is hidden behind a tooltip.
+*/
+@media (max-width: 640px) {
+  /* Cards no longer need horizontal scroll. */
+  .table-scroll { overflow-x: visible; }
+
+  .table-scroll table,
+  .table-scroll tbody {
+    display: block;
+    width: 100%;
+  }
+  .table-scroll thead { display: none; }
+
+  .table-scroll tr {
+    display: block;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-md);
+    padding: 4px 14px;
+    margin-bottom: 10px;
+    background: var(--surface-2);
+  }
+  .table-scroll tr:last-child { margin-bottom: 0; }
+
+  .table-scroll td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+    color: var(--body);
+    text-align: right;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+  .table-scroll td:last-child { border-bottom: none; }
+
+  /* Column label drawn from data-label so we don't repeat th text per row. */
+  .table-scroll td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    text-align: left;
+    flex: 0 0 auto;
+    max-width: 45%;
+  }
+  /* Cells without data-label (e.g. the empty-state row) skip the label slot. */
+  .table-scroll td:not([data-label])::before { content: none; }
+
+  /* Truncation classes drop their caps in card mode — full value is visible. */
+  .table-scroll .id,
+  .table-scroll .id-sm,
+  .table-scroll .id-lg,
+  .table-scroll .pkg,
+  .table-scroll .list-trunc {
+    max-width: none;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: clip;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    text-align: right;
+  }
+  /* Path: drop the RTL ellipsis trick, just wrap naturally. */
+  .table-scroll .path {
+    max-width: none;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: clip;
+    direction: ltr;
+    text-align: right;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  .table-scroll .url-chip {
+    max-width: none;
+    white-space: normal;
+    text-overflow: clip;
+    word-break: break-all;
+    text-align: right;
+  }
+
+  /* Empty-state cells (either .empty-cell or any td[colspan]) fill the card
+     without a label and stay left-aligned. */
+  .table-scroll td.empty-cell,
+  .table-scroll td[colspan] {
+    display: block;
+    text-align: left;
+    padding: 14px 4px;
+    border-bottom: none;
+  }
+  .table-scroll td.empty-cell::before,
+  .table-scroll td[colspan]::before { content: none; }
+
+  /* Pager sits below the cards with a clean separator. */
+  .pager { border-top: 1px solid var(--hairline); margin-top: 14px; }
+}
+
+/* ----- Stat list (posture) ----- */
+.statlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 13.5px;
+  color: var(--body);
+}
+
+.stat:last-child {
+  border-bottom: none;
+}
+
+.stat b {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--text);
+  font-size: 14px;
+  /* Long values (errors, timestamps) clip instead of pushing the label off. */
+  max-width: 60%;
+  min-width: 0;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.stat > span:first-child {
+  min-width: 0;
+  flex: 0 0 auto;
+}
+
+/* ----- Pills / chips / dots ----- */
+.pill,
+.badge,
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.pill {
+  border: 1px solid var(--hairline-strong);
+  color: var(--muted);
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+.badge {
+  background: var(--primary-soft);
+  color: var(--primary-active);
+  padding: 4px 11px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  font-family: var(--mono);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.chip {
+  background: var(--surface-2);
+  border: 1px solid var(--hairline);
+  color: var(--body);
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--muted-soft);
+  flex: none;
+}
+
+.dot.ok {
+  background: var(--success);
+}
+.dot.warn {
+  background: var(--warn);
+}
+.dot.bad {
+  background: var(--error);
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--body);
+}
+
+/* ----- Smart truncation primitives -----
+   Long IDs, hashes, paths, URLs and joined lists are first-class data in this
+   product. Rather than letting them wrap mid-token (ugly) or overflow the panel
+   (worse), we clamp them with ellipsis and surface the full value via title /
+   tooltip. The classes opt-in per-cell so the rest of the table layout stays. */
+.id, .id-sm, .id-lg {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--body);
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: bottom;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+.id    { max-width: 14ch; }
+.id-sm { max-width: 10ch; }
+.id-lg { max-width: 22ch; }
+td:first-child .id,
+td:first-child .id-sm,
+td:first-child .id-lg { color: var(--text); }
+
+/* Path truncation that keeps the filename visible (truncate from start). */
+.path {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--body);
+  display: inline-block;
+  max-width: 22ch;
+  direction: rtl;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  unicode-bidi: plaintext;
+}
+
+/* package@version cell — never break mid-name, clip with ellipsis if needed. */
+.pkg {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--body);
+  display: inline-block;
+  max-width: 24ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Inline comma-joined list that truncates instead of wrapping. */
+.list-trunc {
+  display: inline-block;
+  max-width: 22ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+/* URL pill — neutral by default to keep Cursor Orange scarce; accent on hover.
+   Mirrors .pill-link but renders in JetBrains Mono since the value is a URL. */
+.url-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  max-width: 22ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+.url-chip:hover { color: var(--primary-active); border-color: var(--primary); }
+
+/* ----- Semantic text ----- */
+.critical,
+.high {
+  color: var(--error);
+}
+.medium {
+  color: var(--warn);
+}
+.low,
+.ok {
+  color: var(--success);
+}
+.muted {
+  color: var(--muted);
+}
+
+/* ----- Buttons / forms ----- */
+.button {
+  border: 1px solid transparent;
+  background: var(--primary);
+  color: var(--on-primary);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.button:hover {
+  background: var(--primary-active);
+}
+
+.button.secondary {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--hairline-strong);
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.field input,
+.field select {
+  background: var(--bg-soft);
+  border: 1px solid var(--hairline-strong);
+  color: var(--text);
+  border-radius: var(--radius-md);
+  padding: 11px 12px;
+  min-width: 0;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ----- Legacy radar/timeline (used by other pages) ----- */
+.radar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.radar-item {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 15px;
+  background: var(--surface);
+}
+
+.timeline {
+  display: grid;
+  gap: 11px;
+}
+
+.timeline div {
+  border-left: 2px solid var(--hairline-strong);
+  padding-left: 13px;
+  color: var(--body);
+  font-size: 13px;
+  /* Long mono action names (provider_failover_consent_requested) must wrap on
+     mobile, but should break at underscores rather than mid-letter. */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* ----- Settings controls ----- */
+.controls {
+  display: grid;
+  gap: 4px;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 14px;
+  color: var(--text);
+}
+
+.control-row:last-of-type {
+  border-bottom: none;
+}
+
+.control-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  cursor: pointer;
+  flex: none;
+}
+
+.control-row select,
+.control-row input[type="number"] {
+  background: var(--bg-soft);
+  border: 1px solid var(--hairline-strong);
+  color: var(--text);
+  border-radius: var(--radius-md);
+  padding: 8px 10px;
+}
+
+/* ----- Scanner / status card grid ----- */
+.cardgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.statuscard {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+}
+
+.statuscard .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.statuscard h3 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.status-badge {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  border: 1px solid var(--hairline-strong);
+  white-space: nowrap;
+}
+
+.status-badge.enabled,
+.status-badge.completed,
+.status-badge.ready {
+  color: var(--success);
+  border-color: color-mix(in srgb, var(--success) 40%, transparent);
+}
+
+.status-badge.tool_missing,
+.status-badge.not_configured,
+.status-badge.unavailable,
+.status-badge.error,
+.status-badge.failed,
+.status-badge.quota_limited,
+.status-badge.auth_failed,
+.status-badge.endpoint_unreachable,
+.status-badge.timeout {
+  color: var(--error);
+  border-color: color-mix(in srgb, var(--error) 40%, transparent);
+}
+
+.status-badge.disabled,
+.status-badge.not_applicable {
+  color: var(--muted);
+}
+
+.hint {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--warn);
+  font-family: var(--mono);
+  word-break: break-word;
+}
+
+@media (max-width: 980px) {
+  .cardgrid {
+    grid-template-columns: 1fr;
+  }
+  .control-row {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 980px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+  .side {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--hairline);
+    padding: 16px;
+  }
+  /* Mobile nav becomes an even 2-column grid so buttons line up cleanly
+     instead of wrapping into 2/3/3/2/3 stair-stepped rows. The last item
+     (Settings) spans both columns as a footer-style pill, so the orphan tail
+     is intentional rather than ragged. */
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--hairline);
+    background: var(--surface);
+    justify-content: flex-start;
+    min-width: 0;
+  }
+  .nav a.active {
+    box-shadow: none;
+    border-color: var(--primary);
+  }
+  .nav a:last-child {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+  .sidebar-foot {
+    display: none;
+  }
+  .main {
+    padding: 24px 16px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  .metrics,
+  .two,
+  .form,
+  .radar {
+    grid-template-columns: 1fr;
+  }
+  table {
+    font-size: 12.5px;
+  }
+  /* Tighter cell padding so wide tables don't force horizontal scroll as often. */
+  th, td { padding: 9px 6px; }
+  /* Cap mono tokens harder on small screens — title attr still reveals full value. */
+  .id    { max-width: 11ch; }
+  .id-sm { max-width: 8ch; }
+  .id-lg { max-width: 15ch; }
+  .path  { max-width: 14ch; }
+  .pkg   { max-width: 16ch; }
+  .list-trunc { max-width: 14ch; }
+  .url-chip   { max-width: 14ch; }
+  /* Head row stays usable when the right-side badge gets long. */
+  .head-actions { width: 100%; flex-wrap: wrap; }
+  .badge, .pill { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+  /* KPI numbers shouldn't be huge on phones — they're already prominent. */
+  .metric-value { font-size: 26px; }
+  /* Stat list label/value share row gracefully. */
+  .stat { gap: 12px; }
+}
+
+/* ============================================================
+   Demo banner (hosted preview)
+   ============================================================ */
+.demo-banner {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: var(--primary-soft); border: 1px solid color-mix(in srgb, var(--primary) 35%, var(--hairline));
+  color: var(--body); border-radius: var(--radius-md);
+  padding: 11px 14px; margin-bottom: 22px; font-size: 13px; line-height: 1.5;
+}
+.demo-banner b { color: var(--text); font-weight: 600; }
+.demo-banner a { color: var(--primary-active); text-decoration: underline; }
+.demo-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--primary); margin-top: 5px; flex: none; }
+
+/* ============================================================
+   Landing page
+   ============================================================ */
+.lp {
+  position: relative;
+  max-width: 1120px; margin: 0 auto; padding: 0 32px;
+  overflow: clip;
+}
+/* Atmospheric accent glow + faint grid behind the hero */
+.lp-glow {
+  position: absolute; inset: -10% -20% auto -20%; height: 760px; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(900px 420px at 22% 4%, rgba(245,78,0,0.16), transparent 60%),
+    radial-gradient(700px 380px at 92% -6%, rgba(245,78,0,0.08), transparent 60%);
+  filter: blur(8px);
+}
+.lp > *:not(.lp-glow) { position: relative; z-index: 1; }
+
+.lp-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 0;
+}
+.lp-brand {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-weight: 600; font-size: 17px; letter-spacing: -0.3px; color: var(--text);
+}
+.lp-dot { width: 9px; height: 9px; border-radius: 9999px; background: var(--primary); flex: none; box-shadow: 0 0 0 4px rgba(245,78,0,0.12); }
+.lp-nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; }
+.lp-nav-links a { color: var(--muted); transition: color 120ms ease; }
+.lp-nav-links a:hover { color: var(--text); }
+
+.lp-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--primary); color: var(--on-primary);
+  padding: 12px 20px; border-radius: var(--radius-md);
+  font-size: 14.5px; font-weight: 500; border: 1px solid transparent;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.lp-btn:hover { background: var(--primary-active); transform: translateY(-1px); }
+.lp-btn-sm { padding: 8px 15px; font-size: 13.5px; }
+.lp-btn-ghost { background: var(--surface); color: var(--text); border-color: var(--hairline-strong); }
+.lp-btn-ghost:hover { background: var(--surface-2); }
+
+.lp-eyebrow {
+  display: inline-block; font-family: var(--mono); font-size: 12px;
+  color: var(--primary-active); letter-spacing: 0.9px; text-transform: uppercase;
+  border: 1px solid color-mix(in srgb, var(--primary) 35%, var(--hairline)); border-radius: 9999px; padding: 6px 14px;
+  background: var(--primary-soft);
+}
+
+/* Hero: copy + product terminal */
+.lp-hero {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
+  padding: 70px 0 64px;
+}
+.lp-h1 {
+  margin: 22px 0 0; font-weight: 400; font-size: 47px; line-height: 1.12;
+  letter-spacing: -1.6px; color: var(--text);
+}
+.lp-h1 .sentence { display: block; }
+/* Keep the second sentence's opening clause intact so it never splits at the
+   "human-approved" hyphen — it wraps cleanly between clauses instead. */
+.lp-h1 .nowrap { white-space: nowrap; }
+.lp-h1 em { font-style: italic; font-weight: 300; color: var(--body); }
+.lp-accent {
+  color: var(--primary);
+  background: linear-gradient(90deg, var(--primary), var(--primary-active));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.lp-lede { margin: 22px 0 0; max-width: 56ch; font-size: 17.5px; line-height: 1.6; color: var(--muted); }
+.lp-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.lp-trust { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 28px; color: var(--muted-soft); font-size: 13px; }
+.lp-trust span { display: inline-flex; align-items: center; gap: 7px; }
+.lp-mono { font-family: var(--mono); }
+
+/* Copy-pasteable install command */
+.lp-install { margin-top: 24px; display: flex; flex-direction: column; gap: 9px; align-items: flex-start; }
+.lp-install-label { font-family: var(--mono); font-size: 11px; color: var(--muted-soft); text-transform: uppercase; letter-spacing: 0.9px; }
+.lp-install-box {
+  display: inline-flex; align-items: stretch; border: 1px solid var(--hairline-strong);
+  border-radius: 9px; overflow: hidden; background: var(--bg-soft);
+}
+.lp-install-cmd {
+  font-family: var(--mono); font-size: 14px; color: var(--text);
+  padding: 11px 16px; white-space: nowrap; display: inline-flex; align-items: center;
+}
+.lp-install-prompt { color: var(--primary-active); margin-right: 9px; user-select: none; }
+.lp-copy {
+  display: inline-flex; align-items: center; gap: 7px;
+  border: none; border-left: 1px solid var(--hairline-strong);
+  background: var(--surface-2); color: var(--body);
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  padding: 0 16px; cursor: pointer; transition: background 120ms ease, color 120ms ease;
+}
+.lp-copy:hover { background: var(--surface); color: var(--text); }
+.lp-copy svg { color: var(--primary-active); }
+
+/* Terminal product visual */
+.lp-terminal {
+  border: 1px solid var(--hairline-strong); border-radius: 14px; overflow: hidden;
+  background: linear-gradient(180deg, #0b0b0a, #0d0d0c);
+  box-shadow: 0 30px 80px -40px rgba(0,0,0,0.9), 0 0 0 1px rgba(245,78,0,0.06);
+}
+.lp-term-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 14px; border-bottom: 1px solid var(--hairline);
+  background: var(--bg-soft);
+}
+.lp-term-lights { display: inline-flex; gap: 7px; }
+.lp-term-lights i { width: 11px; height: 11px; border-radius: 9999px; display: inline-block; }
+.lp-term-lights i:nth-child(1) { background: #ff5d73; }
+.lp-term-lights i:nth-child(2) { background: #e0a24a; }
+.lp-term-lights i:nth-child(3) { background: #4ec99a; }
+.lp-term-title { font-family: var(--mono); font-size: 12px; color: var(--muted-soft); }
+.lp-term-body {
+  margin: 0; padding: 18px 20px; font-family: var(--mono);
+  font-size: 13px; line-height: 1.75; color: var(--body);
+}
+.lp-term-body .t-line { white-space: pre; }
+.lp-term-body .t-mut { color: var(--muted); }
+.lp-term-body .t-dim { color: var(--muted-soft); }
+.lp-term-body .t-b { color: var(--text); font-weight: 500; }
+.lp-term-body .t-grn { color: var(--success); }
+.lp-term-body .t-red { color: var(--error); font-weight: 500; }
+.lp-term-body .t-yel { color: var(--warn); font-weight: 500; }
+.lp-term-body .t-acc { color: var(--primary-active); }
+
+.lp-section { padding: 60px 0 0; }
+.lp-section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11.5px; color: var(--primary-active);
+  letter-spacing: 0.9px; text-transform: uppercase;
+}
+.lp-h2 {
+  margin: 14px 0 0; font-weight: 400; font-size: 33px; line-height: 1.18;
+  letter-spacing: -1px; max-width: 26ch; color: var(--text);
+}
+.lp-note { margin: 22px 0 0; max-width: 70ch; font-size: 14.5px; line-height: 1.6; color: var(--muted); }
+
+/* Pipeline — clean uniform step cards (no connector line) */
+.lp-pipeline {
+  margin-top: 28px; display: grid; grid-template-columns: repeat(9, 1fr); gap: 10px;
+}
+.lp-step {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+  padding: 18px 14px; border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  transition: transform 120ms ease, border-color 120ms ease;
+}
+.lp-step:hover { transform: translateY(-3px); border-color: var(--hairline-strong); }
+.lp-step.hot {
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--hairline));
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+}
+.lp-step-n {
+  font-family: var(--mono); font-size: 12px; color: var(--muted-soft); letter-spacing: 1px;
+  width: 26px; height: 26px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--bg-soft); border: 1px solid var(--hairline);
+}
+.lp-step.hot .lp-step-n { color: var(--on-primary); background: var(--primary); border-color: var(--primary); }
+.lp-step-name { display: block; font-weight: 500; font-size: 13.5px; letter-spacing: -0.2px; color: var(--text); line-height: 1.25; }
+
+/* Feature cards */
+.lp-features { margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.lp-feature {
+  padding: 26px; border: 1px solid var(--hairline); border-radius: var(--radius-lg);
+  background: var(--surface); transition: border-color 120ms ease, transform 120ms ease;
+}
+.lp-feature:hover { border-color: var(--hairline-strong); transform: translateY(-2px); }
+.lp-feature-ic {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--primary-soft); color: var(--primary-active);
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, var(--hairline));
+}
+.lp-feature h3 { margin: 16px 0 8px; font-weight: 500; font-size: 19px; letter-spacing: -0.3px; }
+.lp-feature p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+
+/* Stack chips */
+.lp-stack { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 9px; }
+.lp-chip {
+  font-family: var(--mono); font-size: 13px; color: var(--body);
+  background: var(--surface); border: 1px solid var(--hairline-strong);
+  padding: 8px 14px; border-radius: 9999px;
+}
+
+/* Final CTA band */
+.lp-final {
+  margin: 72px 0 0; padding: 56px 48px;
+  border: 1px solid color-mix(in srgb, var(--primary) 28%, var(--hairline));
+  border-radius: 18px; text-align: center;
+  background:
+    radial-gradient(700px 300px at 50% 0%, rgba(245,78,0,0.12), transparent 70%),
+    var(--surface);
+}
+.lp-final-h { margin: 0 auto; font-weight: 400; font-size: 38px; line-height: 1.15; letter-spacing: -1.2px; color: var(--text); }
+.lp-final .lp-cta { justify-content: center; margin-top: 28px; }
+
+.lp-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  padding: 36px 0 44px; margin-top: 48px; border-top: 1px solid var(--hairline);
+  color: var(--muted-soft); font-size: 12.5px; flex-wrap: wrap;
+}
+
+@media (max-width: 920px) {
+  .lp { overflow-x: hidden; }
+  .lp-nav-links a:not(.lp-btn) { display: none; }
+  .lp-hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 0; }
+  .lp-h1 { font-size: 38px; letter-spacing: -1.2px; }
+  .lp-h1 .nowrap { white-space: normal; }   /* allow the headline to wrap on small screens */
+  .lp-lede { font-size: 16px; }
+  .lp-terminal { max-width: 100%; }
+  .lp-term-body { overflow-x: auto; }
+  .lp-pipeline { grid-template-columns: repeat(3, 1fr); }
+  .lp-features { grid-template-columns: 1fr; }
+  .lp-h2, .lp-final-h { font-size: 26px; }
+  .lp-final { padding: 40px 24px; }
+}
+
+@media (max-width: 480px) {
+  .lp { padding: 0 18px; }
+  .lp-hero { padding: 28px 0 36px; }
+  .lp-h1 { font-size: 31px; letter-spacing: -0.8px; line-height: 1.16; }
+  .lp-eyebrow { font-size: 10.5px; padding: 5px 11px; }
+  .lp-lede { font-size: 15px; }
+  .lp-cta { width: 100%; }
+  .lp-cta .lp-btn { flex: 1 1 auto; justify-content: center; }
+  .lp-install { width: 100%; }
+  .lp-install-box { width: 100%; }
+  .lp-install-cmd { flex: 1; font-size: 13px; }
+  .lp-trust { gap: 14px; font-size: 12px; }
+  .lp-pipeline { grid-template-columns: repeat(2, 1fr); }
+  .lp-term-body { font-size: 12px; }
+  .lp-section { padding: 44px 0 0; }
+  .lp-h2, .lp-final-h { font-size: 23px; }
+  .lp-final { margin-top: 52px; padding: 32px 20px; }
+}
+
+/* ============================================================
+   Dashboard UX enhancements
+   ============================================================ */
+.head-actions { display: inline-flex; align-items: center; gap: 12px; }
+.pill-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; color: var(--muted); font-weight: 500;
+  border: 1px solid var(--hairline-strong); border-radius: 9999px; padding: 5px 12px;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+.pill-link:hover { color: var(--text); border-color: var(--primary); }
+
+.kpi-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.kpi-icon { color: var(--muted-soft); }
+.kpi-icon.critical { color: var(--error); }
+.kpi-icon.medium { color: var(--warn); }
+.kpi-icon.ok { color: var(--success); }
+
+/* Reachability pills */
+.reach {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 11.5px; padding: 3px 9px;
+  border-radius: 9999px; border: 1px solid var(--hairline-strong); white-space: nowrap;
+}
+.reach::before { content: ""; width: 6px; height: 6px; border-radius: 9999px; background: currentColor; }
+.reach-hot { color: var(--primary-active); border-color: color-mix(in srgb, var(--primary) 40%, transparent); }
+.reach-dim { color: var(--muted-soft); }
+.reach-muted { color: var(--muted); }
+
+/* Empty-state cell */
+.empty-cell { padding: 26px 8px !important; }
+.empty-cell strong { display: block; color: var(--text); font-size: 14px; margin-bottom: 6px; }
+.empty-cell span { display: block; color: var(--muted); font-size: 13px; line-height: 1.55; max-width: 60ch; margin-bottom: 12px; }
+.empty-cell code { font-family: var(--mono); font-size: 12px; color: var(--body); }
