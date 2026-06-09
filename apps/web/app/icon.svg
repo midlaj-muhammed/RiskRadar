@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="62" height="62" x="1" y="1" rx="14" fill="#0d0d0c" stroke="#f54e00" stroke-width="2"/>
-  <path d="M32 8 L52 15.5 V31.5 C52 43.5 43.8 51 32 56 C20.2 51 12 43.5 12 31.5 V15.5 Z"
-        fill="#161513" stroke="#f54e00" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M17 33 H24.5 L28.5 22 L33 43 L37 27 L40.5 33 H47"
-        stroke="#f54e00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="32" cy="14.5" r="2.5" fill="#f54e00"/>
+  <!-- Solid Brand Orange Background for maximum visibility -->
+  <rect width="64" height="64" rx="16" fill="#f54e00"/>
+  <!-- Dark Shield Cutout -->
+  <path d="M32 12 L48 18 V32 C48 42 41 49 32 54 C23 49 16 42 16 32 V18 Z" fill="#0d0d0c"/>
+  <!-- Bold Orange Pulse -->
+  <path d="M22 34 H28 L32 24 L36 44 L40 30 L42 34 H46" stroke="#f54e00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
