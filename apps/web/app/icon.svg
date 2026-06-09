@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Brand canvas: warm dark (--bg #0d0d0c) with the same 12-14px corner rounding used on .card/.panel. -->
+  <rect width="64" height="64" rx="14" fill="#0d0d0c"/>
+  <!-- Shield: filled with surface, outlined with a single hairline so depth comes from contrast, not shadow. -->
+  <path d="M32 8 L52 15.5 V31.5 C52 43.5 43.8 51 32 56 C20.2 51 12 43.5 12 31.5 V15.5 Z"
+        fill="#161513" stroke="#36342d" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Pulse line in Cursor Orange — single clear peak so it reads at 16px. -->
+  <path d="M17 33 H24.5 L28.5 22 L33 43 L37 27 L40.5 33 H47"
+        stroke="#f54e00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- The brand dot, tucked into the shield's crown so the favicon matches the sidebar wordmark. -->
+  <circle cx="32" cy="14.5" r="1.8" fill="#f54e00"/>
+</svg>
