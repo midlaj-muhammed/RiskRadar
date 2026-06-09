@@ -5,9 +5,9 @@ export const metadata = {
   title: "RiskRadar · Watch Commander for supply-chain security",
   description:
     "RiskRadar finds the CVEs that reach your code, lets Codex write the fix, signs the result, and waits for a human tap. Open-source, with real, live integrations.",
-  icons: {
-    icon: "/favicon.svg",
-  },
+  icons: [
+    { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
+  ],
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
