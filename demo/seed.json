@@ -40,6 +40,70 @@
       "lastScanStatus": "completed",
       "createdAt": "2026-05-11T05:41:19.022Z",
       "updatedAt": "2026-05-28T05:41:19.022Z"
+    },
+    {
+      "id": "proj_XrUiVn1UMn",
+      "name": "acme/legacy-crm",
+      "sourceType": "local",
+      "localPath": "/opt/legacy/crm",
+      "isPathAllowlisted": true,
+      "packageManager": "npm",
+      "deploymentProvider": "manual",
+      "productionExposed": false,
+      "stack": [
+        "express",
+        "jquery",
+        "mysql"
+      ],
+      "lastScanAt": "2026-06-06T20:01:09.719Z",
+      "lastScanStatus": "completed",
+      "createdAt": "2026-02-28T20:01:09.719Z",
+      "updatedAt": "2026-06-06T20:01:09.719Z"
+    },
+    {
+      "id": "proj_kDPVp1n_U6",
+      "name": "acme/public-api-gateway",
+      "sourceType": "github",
+      "githubOwner": "acme",
+      "githubRepo": "api-gateway",
+      "githubDefaultBranch": "develop",
+      "repoUrl": "https://github.com/acme/api-gateway",
+      "isPathAllowlisted": false,
+      "packageManager": "npm",
+      "deploymentProvider": "vercel",
+      "deploymentUrl": "https://api.acme.com",
+      "productionExposed": true,
+      "stack": [
+        "fastify",
+        "typescript",
+        "redis"
+      ],
+      "lastScanAt": "2026-06-08T08:01:09.719Z",
+      "lastScanStatus": "completed",
+      "createdAt": "2026-04-24T20:01:09.719Z",
+      "updatedAt": "2026-06-08T08:01:09.719Z"
+    },
+    {
+      "id": "proj_4Vw-TxCdUt",
+      "name": "acme/mobile-backend",
+      "sourceType": "github",
+      "githubOwner": "acme",
+      "githubRepo": "mobile-api",
+      "githubDefaultBranch": "main",
+      "repoUrl": "https://github.com/acme/mobile-api",
+      "isPathAllowlisted": false,
+      "packageManager": "pip",
+      "deploymentProvider": "unknown",
+      "productionExposed": true,
+      "stack": [
+        "django",
+        "postgresql",
+        "celery"
+      ],
+      "lastScanAt": "2026-06-07T20:01:09.719Z",
+      "lastScanStatus": "completed",
+      "createdAt": "2026-04-09T20:01:09.719Z",
+      "updatedAt": "2026-06-07T20:01:09.719Z"
     }
   ],
   "scanJobs": [],
@@ -116,6 +180,63 @@
       "modifiedAt": "2026-02-28T05:41:19.022Z",
       "references": [
         "https://github.com/psf/requests/security"
+      ]
+    },
+    {
+      "id": "vuln_shelljs",
+      "source": "osv",
+      "osvId": "GHSA-8877-9jjf-ccpj",
+      "cveIds": [
+        "CVE-2022-21144"
+      ],
+      "ghsaIds": [
+        "GHSA-8877-9jjf-ccpj"
+      ],
+      "summary": "Command injection in shelljs via make-dir utility.",
+      "severity": "critical",
+      "cvssScore": 9.8,
+      "publishedAt": "2024-03-30T20:01:09.719Z",
+      "modifiedAt": "2025-05-04T20:01:09.719Z",
+      "references": [
+        "https://github.com/shelljs/shelljs/issues/1069"
+      ]
+    },
+    {
+      "id": "vuln_django",
+      "source": "osv",
+      "osvId": "GHSA-v885-v9cm-fhr4",
+      "cveIds": [
+        "CVE-2023-43665"
+      ],
+      "ghsaIds": [
+        "GHSA-v885-v9cm-fhr4"
+      ],
+      "summary": "Django Denial of Service vulnerability in internationalization (i18n).",
+      "severity": "high",
+      "cvssScore": 7.5,
+      "publishedAt": "2025-12-10T20:01:09.719Z",
+      "modifiedAt": "2026-05-09T20:01:09.719Z",
+      "references": [
+        "https://www.djangoproject.com/weblog/2023/oct/04/security-releases/"
+      ]
+    },
+    {
+      "id": "vuln_ws",
+      "source": "osv",
+      "osvId": "GHSA-v644-98vg-3wrr",
+      "cveIds": [
+        "CVE-2024-37890"
+      ],
+      "ghsaIds": [
+        "GHSA-v644-98vg-3wrr"
+      ],
+      "summary": "ws ReDoS vulnerability when parsing Sec-WebSocket-Protocol headers.",
+      "severity": "high",
+      "cvssScore": 7.5,
+      "publishedAt": "2026-05-29T20:01:09.719Z",
+      "modifiedAt": "2026-06-06T20:01:09.719Z",
+      "references": [
+        "https://github.com/websockets/ws/security/advisories/GHSA-v644-98vg-3wrr"
       ]
     }
   ],
@@ -247,6 +368,82 @@
       "reachabilityEvidence": "Imported in first-party source — treat as reachable.",
       "createdAt": "2026-05-28T05:41:19.023Z",
       "updatedAt": "2026-05-28T05:41:19.023Z"
+    },
+    {
+      "id": "find_Be1vJh7khZ",
+      "projectId": "proj_XrUiVn1UMn",
+      "vulnerabilityId": "vuln_ws",
+      "packageName": "ws",
+      "ecosystem": "npm",
+      "currentVersion": "7.4.5",
+      "fixedVersion": "7.5.10",
+      "dependencyType": "direct",
+      "manifestPath": "package.json",
+      "riskScore": 72,
+      "riskLevel": "high",
+      "riskFactors": [
+        "Old version",
+        "Legacy stack"
+      ],
+      "missingRiskData": [],
+      "fixStrategy": "minor_upgrade",
+      "status": "open",
+      "scanConfidence": "lockfile",
+      "reachability": "imported",
+      "reachabilityEvidence": "Used in Express server for WebSocket support.",
+      "createdAt": "2026-06-08T20:01:09.720Z",
+      "updatedAt": "2026-06-08T20:01:09.720Z"
+    },
+    {
+      "id": "find_lngsaM473t",
+      "projectId": "proj_kDPVp1n_U6",
+      "vulnerabilityId": "vuln_shelljs",
+      "packageName": "shelljs",
+      "ecosystem": "npm",
+      "currentVersion": "0.8.4",
+      "fixedVersion": "0.8.5",
+      "dependencyType": "direct",
+      "manifestPath": "package.json",
+      "riskScore": 95,
+      "riskLevel": "critical",
+      "riskFactors": [
+        "Production exposed",
+        "Critical severity",
+        "Command injection"
+      ],
+      "missingRiskData": [],
+      "fixStrategy": "safe_patch",
+      "status": "open",
+      "scanConfidence": "lockfile",
+      "reachability": "imported",
+      "reachabilityEvidence": "Used for system-level script orchestration in API gateway.",
+      "createdAt": "2026-06-08T20:01:09.720Z",
+      "updatedAt": "2026-06-08T20:01:09.720Z"
+    },
+    {
+      "id": "find_6O5yYnI4r2",
+      "projectId": "proj_4Vw-TxCdUt",
+      "vulnerabilityId": "vuln_django",
+      "packageName": "Django",
+      "ecosystem": "PyPI",
+      "currentVersion": "4.2.0",
+      "fixedVersion": "4.2.6",
+      "dependencyType": "direct",
+      "manifestPath": "requirements.txt",
+      "riskScore": 68,
+      "riskLevel": "high",
+      "riskFactors": [
+        "Production exposed",
+        "i18n enabled"
+      ],
+      "missingRiskData": [],
+      "fixStrategy": "minor_upgrade",
+      "status": "open",
+      "scanConfidence": "direct_manifest_only",
+      "reachability": "imported",
+      "reachabilityEvidence": "Core framework for mobile backend.",
+      "createdAt": "2026-06-08T20:01:09.720Z",
+      "updatedAt": "2026-06-08T20:01:09.720Z"
     }
   ],
   "riskSignals": [
@@ -294,6 +491,36 @@
       "id": "risk_find_requests",
       "findingId": "find_requests",
       "epssProbability": 0.21,
+      "isInKev": false,
+      "isProductionExposed": true,
+      "isDirectDependency": true,
+      "hasFix": true,
+      "notes": []
+    },
+    {
+      "id": "risk_rl-G6oc5wZ",
+      "findingId": "find_Be1vJh7khZ",
+      "epssProbability": 0.15,
+      "isInKev": false,
+      "isProductionExposed": false,
+      "isDirectDependency": true,
+      "hasFix": true,
+      "notes": []
+    },
+    {
+      "id": "risk_oCdugOL2YC",
+      "findingId": "find_lngsaM473t",
+      "epssProbability": 0.82,
+      "isInKev": true,
+      "isProductionExposed": true,
+      "isDirectDependency": true,
+      "hasFix": true,
+      "notes": []
+    },
+    {
+      "id": "risk_1rRGdgEu8d",
+      "findingId": "find_6O5yYnI4r2",
+      "epssProbability": 0.08,
       "isInKev": false,
       "isProductionExposed": true,
       "isDirectDependency": true,
@@ -437,6 +664,22 @@
       "confidence": "high",
       "remediation": "Rotate the token and move it to a secret manager.",
       "createdAt": "2026-05-29T05:41:19.023Z"
+    },
+    {
+      "id": "scf_GeH1-NwLFg",
+      "projectId": "proj_XrUiVn1UMn",
+      "scanner": "gitleaks",
+      "category": "secret",
+      "severity": "critical",
+      "title": "AWS Secret Access Key",
+      "description": "Hardcoded AWS secret key found in config.",
+      "evidencePath": "config/aws.js",
+      "evidenceLine": 5,
+      "redactedEvidence": "AKIA••••••••••••••••",
+      "source": "gitleaks",
+      "confidence": "high",
+      "remediation": "Rotate and use IAM role.",
+      "createdAt": "2026-06-08T20:01:09.720Z"
     }
   ]
 }
