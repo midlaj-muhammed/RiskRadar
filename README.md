@@ -16,9 +16,9 @@
 
 ---
 
-RiskRadar inventories GitHub repos and local folders, scans dependencies with real OSV data, enriches risk with EPSS/CISA KEV, and gates remediation through approval workflows.
+RiskRadar is an open-source CVE and supply-chain response command center. It inventories GitHub repos and allowlisted local folders, scans Node.js dependencies with real OSV data, enriches risk with EPSS/CISA KEV when available, shows blast radius, records audit receipts, and gates remediation/approval through real tools or explicit configuration errors.
 
-Everything runs live — unconfigured integrations show as `not_configured` so the dashboard always reflects reality.
+Every integration runs live. Anything you haven't configured (GitHub, Telegram, Codex, OpenClaw, Vercel, Redis, or SBOM tooling) is shown honestly as `not_configured` or `unavailable`, so the dashboard always reflects reality.
 
 ## CLI
 
